@@ -1,4 +1,4 @@
-HSM_CryptonicOS
+THIS IS THE SOFTWARE REPO FOR OUR OPERATING SYSTEM
 =================
 
 Lightweight AUTOSAR-OSEK/VDX-compliant OS for HSM on **MCU TC387QP**
