@@ -81,30 +81,22 @@
 /**
  * @brief Macro to save CPU context.
  */
-#define SAVECTX __asm volatile("PUSH {r4-r12,r14}\n\t");
+#define SAVECTX __asm volatile();
 
 /**
  * @brief Macro to save the stack pointer.
  */
-#define SAVESP __asm volatile("MOV  %0, sp \n\t" : "=r"(OsTasksPCB[RunningTaskID]->sp));
+#define SAVESP __asm volatile();
 
 /**
  * @brief Macro to load CPU context.
  */
-#define LOADCTX __asm volatile( \
-    "MOV sp, %0\n\t" \
-    "POP {r4-r12,r14}\n\t" \
-    "MOV r1,sp\n\t" \
-    "MOV r0,%1\n\t" \
-    "BX r14\n\t" \
-    : \
-    : "r"(OsTasksPCB[RunningTaskID]->sp), "r"(OsTasksPCB[RunningTaskID]->retStatus) \
-    : "memory");
+#define LOADCTX __asm volatile();
 
 /**
  * @brief Macro to load CPU context for the first time.
  */
-#define LOADCTX_FIRST __asm volatile("MOV sp, %0\n\t" "BX %1\n\t" : : "r"(&OsTasksPCB[RunningTaskID]->sp - 4), "r"(OsTasksPCB[RunningTaskID]->address) : "memory");
+#define LOADCTX_FIRST __asm volatile();
 
 /**
  * @brief Context switch flags.
