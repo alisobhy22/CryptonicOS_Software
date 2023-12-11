@@ -1,0 +1,116 @@
+## this is for testing valgrind on every test case
+name: Valgrind
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc valgrind
+
+    - name: valgrind ActivateTask
+      run: |
+        cd Tests/Tasks
+        gcc ActivateTask.c -o ActivateTask
+        valgrind --leak-check=full ./ActivateTask
+
+    - name: valgrind ChainTask
+      run: |
+        cd Tests/Tasks
+        gcc ChainTask.c -o ChainTask
+        valgrind --leak-check=full ./ChainTask
+
+    - name: valgrind GetTaskID
+      run: |
+        cd Tests/Tasks
+        gcc GetTaskID.c -o GetTaskID
+        valgrind --leak-check=full ./GetTaskID
+
+    - name: valgrind GetTaskState
+      run: |
+        cd Tests/Tasks
+        gcc GetTaskState.c -o GetTaskState
+        valgrind --leak-check=full ./GetTaskState
+
+    - name: valgrind Schedule_T1
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T1.c -o Schedule_T1
+        valgrind --leak-check=full ./Schedule_T1
+
+    - name: valgrind Schedule_T2
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T2.c -o Schedule_T2
+        valgrind --leak-check=full ./Schedule_T2
+
+    - name: valgrind Schedule_T3
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T3.c -o Schedule_T3
+        valgrind --leak-check=full ./Schedule_T3
+
+    - name: valgrind Schedule_T4
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T4.c -o Schedule_T4
+        valgrind --leak-check=full ./Schedule_T4
+
+    - name: valgrind Schedule_T5
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T5.c -o Schedule_T5
+        valgrind --leak-check=full ./Schedule_T5
+
+    - name: valgrind TerminateTask
+      run: |
+        cd Tests/Tasks
+        gcc TerminateTask.c -o TerminateTask
+        valgrind --leak-check=full ./TerminateTask
+
+    - name: valgrind WaitEvent
+      run: |
+        cd Tests/Events
+        gcc WaitEvent.c -o WaitEvent
+        valgrind --leak-check=full ./WaitEvent
+
+    - name: valgrind ClearEvent
+      run: |
+        cd Tests/Events
+        gcc ClearEvent.c -o ClearEvent
+        valgrind --leak-check=full ./ClearEvent
+
+
+    - name: valgrind GetEvent
+      run: |
+        cd Tests/Events
+        gcc GetEvent.c -o GetEvent
+        valgrind --leak-check=full ./GetEvent
+
+    - name: valgrind SetEvent
+      run: |
+        cd Tests/Events
+        gcc SetEvent.c -o SetEvent
+        valgrind --leak-check=full ./SetEvent
+
+
+    - name: valgrind GetResource
+      run: |
+        cd Tests/Resources
+        gcc GetResource.c -o GetResource
+        valgrind --leak-check=full ./GetResource
+
+
+    - name: valgrind ReleaseResource
+      run: |
+        cd Tests/Resources
+        gcc ReleaseResource.c -o ReleaseResource
+        valgrind --leak-check=full ./ReleaseResource
+
+
+
+

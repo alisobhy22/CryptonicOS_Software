@@ -1,0 +1,46 @@
+name: Doxygen
+
+on: #[push]
+   push:
+     branches:
+       - main
+       - doxygen_dev
+       
+
+jobs:
+  build:
+    name: Doxygen
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js 16.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+
+    - name: Install dependencies
+      run: npm install
+      env:
+        CI: true
+        
+    - name: Install Doxygen
+      run: |
+        sudo apt-get update && sudo apt-get install -y doxygen
+        doxygen --version
+
+    - name: Generate documentation
+      run: |
+        sudo apt-get install graphviz
+        doxygen Doxyfile
+        #ls -l html
+        ls -a /home/runner/work/HSM_CryptonicOS/HSM_CryptonicOS/html/html
+        cd /home/runner/work/HSM_CryptonicOS/HSM_CryptonicOS/html
+        git config --global user.email "mahmoud_gamal2001@aucegypt.edu"
+        git config --global user.name "Mahmoud-Matar"
+        git add html -A
+        git commit -m "upload doxy to repo"
+        git push origin main
+        #doxygen -g Doxyfile

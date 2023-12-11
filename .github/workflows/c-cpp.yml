@@ -1,0 +1,174 @@
+name: API Tests
+
+on: [push]
+  #push:
+    #branches: [ "main" ]
+  #pull_request:
+    #branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc
+
+    - name: Build ActivateTask
+      run: |
+        cd Tests/Tasks
+        gcc ActivateTask.c -o ActivateTask
+    - name: Run ActivateTask
+      run: |
+        cd Tests/Tasks
+        ./ActivateTask  
+        
+    
+    - name: Build ChainTask
+      run: |
+        cd Tests/Tasks
+        gcc ChainTask.c -o ChainTask
+    - name: Run ChainTask
+      run: |
+        cd Tests/Tasks
+        ./ChainTask
+
+    - name: Build GetTaskID
+      run: |
+        cd Tests/Tasks
+        gcc GetTaskID.c -o GetTaskID
+    - name: Run GetTaskID
+      run: |
+        cd Tests/Tasks
+        ./GetTaskID
+        
+    - name: Build GetTaskState
+      run: |
+        cd Tests/Tasks
+        gcc GetTaskState.c -o GetTaskState
+    - name: Run GetTaskState
+      run: |
+        cd Tests/Tasks
+        ./GetTaskState
+        
+    - name: Build Schedule_T1
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T1.c -o Schedule_T1
+    - name: Run Schedule_T1
+      run: |
+        cd Tests/Tasks
+        ./Schedule_T1
+        
+    - name: Build Schedule_T2
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T2.c -o Schedule_T2
+    - name: Run Schedule_T2
+      run: |
+        cd Tests/Tasks
+        ./Schedule_T2
+        
+    - name: Build Schedule_T3
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T3.c -o Schedule_T3
+    - name: Run Schedule_T3
+      run: |
+        cd Tests/Tasks
+        ./Schedule_T3
+    
+    - name: Build Schedule_T4
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T4.c -o Schedule_T4
+    - name: Run Schedule_T4
+      run: |
+        cd Tests/Tasks
+        ./Schedule_T4
+        
+    - name: Build Schedule_T5
+      run: |
+        cd Tests/Tasks
+        gcc Schedule_T5.c -o Schedule_T5
+    - name: Run Schedule_T5
+      run: |
+        cd Tests/Tasks
+        ./Schedule_T5
+        
+        
+    #- name: Build Example_T1
+     # run: |
+      #  cd Tests/Tasks
+      #  gcc Example_T1.c -o Example_T1
+ #   - name: Run Example_T1
+    #  run: |
+     #   cd Tests/Tasks
+      #  ./Example_T1
+        
+        
+    - name: Build TerminateTask
+      run: |
+        cd Tests/Tasks
+        gcc TerminateTask.c -o TerminateTask
+    - name: Run TerminateTask
+      run: |
+        cd Tests/Tasks
+        ./TerminateTask
+
+    - name: Build ClearEvent
+      run: |
+            cd Tests/Events
+            gcc ClearEvent.c -o ClearEvent
+    - name: Run ClearEvent
+      run: |
+            cd Tests/Events
+            ./ClearEvent
+        
+    - name: Build WaitEvent
+      run: |
+            cd Tests/Events
+            gcc WaitEvent.c -o WaitEvent
+    - name: Run WaitEvent
+      run: |
+            cd Tests/Events
+            ./WaitEvent
+            
+    - name: Build SetEvent
+      run: |
+            cd Tests/Events
+            gcc SetEvent.c -o SetEvent
+    - name: Run SetEvent
+      run: |
+            cd Tests/Events
+            ./SetEvent
+
+
+    - name: Build GetEvent
+      run: |
+            cd Tests/Events
+            gcc GetEvent.c -o GetEvent
+    - name: Run GetEvent
+      run: |
+            cd Tests/Events
+            ./GetEvent
+            
+    - name: Build GetResource
+      run: |
+            cd Tests/Resources
+            gcc GetResource.c -o GetResource
+    - name: Run GetResource
+      run: |
+            cd Tests/Resources
+            ./GetResource
+
+
+    - name: Build ReleaseResource
+      run: |
+            cd Tests/Resources
+            gcc ReleaseResource.c -o ReleaseResource
+    - name: Run ReleaseResource
+      run: |
+            cd Tests/Resources
+            ./ReleaseResource

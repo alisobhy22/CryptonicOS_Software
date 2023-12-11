@@ -1,0 +1,6 @@
+<map id="Ready_Entry" name="Ready_Entry">
+<area shape="rect" id="node1" title=" " alt="" coords="36,185,140,212"/>
+<area shape="rect" id="node2" href="$structTask.html" title=" " alt="" coords="63,95,113,121"/>
+<area shape="rect" id="node3" href="$structEvent.html" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node4" href="$structResource.html" title=" " alt="" coords="101,5,184,32"/>
+</map>
